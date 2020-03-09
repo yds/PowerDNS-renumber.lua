@@ -49,7 +49,7 @@ then `192.168.42.69` will be returned.
 
 ## Getting Started
 
-* Install [PowerDNS Recursor][]
+* Install [PowerDNS Recursor][].
 * Install [renumber.lua][] in [PowerDNS Recursor][]'s configuration folder.
 * Edit `recursor.conf` [lua-dns-script](https://Doc.PowerDNS.com/recursor/settings.html#lua-dns-script)
   setting to point to [renumber.lua][].
@@ -58,7 +58,7 @@ then `192.168.42.69` will be returned.
   `lan` variable and an apropos `newNetmask()` CIDR assigned to the `wan`
   variable reflecting your network config.
 * Configure `pf` (or the firewall of your choice) to portforward the redirects.
-* Restart [PowerDNS Recursor][]
+* Restart [PowerDNS Recursor][].
 * Profit!!!
 
 ## License
