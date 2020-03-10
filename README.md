@@ -1,6 +1,6 @@
 # [PowerDNS-renumber.lua][PowerDNS-renumber]
 
-IP address renumbering Lua script for PowerDNS Recursor
+IP address renumbering Lua script for [PowerDNS Recursor][].
 
 ## Prior Art
 
@@ -40,8 +40,8 @@ Quoting again from the [OpenBSD pf FAQ][Split-Horizon DNS]:
 [renumber.lua][] script itself:
 
 ```lua
-	local lan = '192.168.42'
-	local wan = newNetmask('169.254.42.0/25')
+local lan = '192.168.42'
+local wan = newNetmask('169.254.42.0/25')
 ```
 
 With the above example config, if a lookup resolves to `169.254.42.69`
@@ -49,7 +49,7 @@ then `192.168.42.69` will be returned.
 
 ## Getting Started
 
-* Install [PowerDNS Recursor][].
+* Install
 * Install [renumber.lua][] in [PowerDNS Recursor][]'s configuration folder.
 * Edit `recursor.conf` [lua-dns-script](https://Doc.PowerDNS.com/recursor/settings.html#lua-dns-script)
   setting to point to [renumber.lua][].
