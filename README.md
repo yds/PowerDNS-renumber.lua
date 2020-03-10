@@ -49,7 +49,7 @@ then `192.168.42.69` will be returned.
 
 ## Getting Started
 
-* Install
+* Install [PowerDNS Recursor][].
 * Install [renumber.lua][] in [PowerDNS Recursor][]'s configuration folder.
 * Edit `recursor.conf` [lua-dns-script](https://Doc.PowerDNS.com/recursor/settings.html#lua-dns-script)
   setting to point to [renumber.lua][].
