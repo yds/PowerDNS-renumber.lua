@@ -40,12 +40,17 @@ Quoting again from the [OpenBSD pf FAQ][Split-Horizon DNS]:
 [renumber.lua][] script itself:
 
 ```lua
-local wan = newNetmask('169.254.42.0/25')
-local lan = '192.168.42'
+local nets = {}
+nets['10.16.169'] = newNetmask('172.16.169.0/25')
+nets['10.168.42'] = newNetmask('192.168.42.128/25')
 ```
 
-With the above example config, if a lookup resolves to `169.254.42.69`
-then `192.168.42.69` will be returned.
+With the above example config, if a lookup resolves to `172.16.169.69`
+then `10.16.169.69` will be returned. Or if a lookup resolves to
+`192.168.42.222` then `10.168.42.222` will be returned.
+
+Renumbering multiple subnets as in the above example can be used to force
+LAN to LAN traffic via a VPN tunnel connecting those LANs.
 
 ## Getting Started
 
@@ -54,9 +59,9 @@ then `192.168.42.69` will be returned.
 * Edit `recursor.conf` [lua-dns-script](https://Doc.PowerDNS.com/recursor/settings.html#lua-dns-script)
   setting to point to [renumber.lua][].
   e.g. `lua-dns-script=/etc/pdns/renumber.lua`
-* Edit [renumber.lua][] with the destination subnet prefix assigned to the
-  `lan` variable and an apropos `newNetmask()` CIDR assigned to the `wan`
-  variable reflecting your network config.
+* Edit [renumber.lua][] with the destination subnet prefix as the `nets`
+  dict key `nets['pr.ef.ix']` with an apropos `newNetmask()` CIDR assigned
+  reflecting your network config.
 * Configure `pf` (or the firewall of your choice) to portforward the redirects.
 * Restart [PowerDNS Recursor][].
 * Profit!!!
